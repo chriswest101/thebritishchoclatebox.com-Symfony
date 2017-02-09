@@ -1,0 +1,68 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BoxSizes
+ *
+ * @ORM\Table(name="box_sizes")
+ * @ORM\Entity
+ */
+class BoxSizes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="text", length=65535, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="max_items", type="integer", nullable=false)
+     */
+    private $maxItems;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_path", type="text", length=65535, nullable=false)
+     */
+    private $imagePath;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="width", type="integer", nullable=false)
+     */
+    private $width;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="height", type="integer", nullable=false)
+     */
+    private $height;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="depth", type="integer", nullable=false)
+     */
+    private $depth;
+
+
+}
+

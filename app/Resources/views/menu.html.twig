@@ -1,0 +1,43 @@
+<!-- header-section-starts -->
+    <div class="header">
+        <div class="header-top-strip">
+            <div class="container">
+                <div class="header-top-left">
+                    <ul>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li><a href="{{ path('myaccount') }}"><span class="glyphicon glyphicon-user"> </span>Welcome {{ app.user.name }}!</a> / <a href="{{ path('security_logout') }}">Sign Out</a></li> 
+                        {% else %}
+                            <li><a href="{{ path('security_login') }}"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
+                            <li><a href="{{ path('user_registration') }}"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>           
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="header-right">
+                        <div class="cart box_1">
+                            
+                            <a href="{{ path('viewcart') }}">
+                                <h3>
+                                    {% if app.session.get('basketTotals') %}
+                                        {% set filter = app.session.get('basketTotals') %}
+                                    
+                                        {% set cartPriceTotal = filter['cartPriceTotal'] %}
+                                        {% set cartItemTotal = filter['cartItemTotal'] %}
+                                    {% endif %}
+
+                                    <span class="simpleCart_total">&pound;</span>
+                                    <span class="simpleCart_total" id="simpleCart_total"> 
+                                        {% if cartPriceTotal is defined %} {{ cartPriceTotal }} {% else %} 0.00 {% endif %}
+                                    </span>
+                                    (<span id="simpleCart_quantity" class="simpleCart_quantity">
+                                            {% if cartItemTotal is defined %} {{ cartItemTotal }} {% else %} 0 {% endif %} 
+                                    </span>)<img src="{{ asset("images/bag.png") }}" alt="">
+                                </h3>
+                            </a>     
+                            <p><a href="{{ path('viewcart') }}" class="simpleCart_empty">View cart</a></p>
+                            <div class="clearfix"> </div>
+                        </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>

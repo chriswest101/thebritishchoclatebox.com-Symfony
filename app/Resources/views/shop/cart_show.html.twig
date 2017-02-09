@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
+{% endblock %}
+
+{% block body_id 'cart' %}
+
+{% block main %}
+
+    <!-- content-section-starts-here -->
+    <div class="container">
+        {% if app.session.get('basketTotals') %}
+            {% set filter = app.session.get('basketTotals') %}
+            {% set cartPriceTotal = filter['cartPriceTotal'] %}
+        {% endif %}
+
+        <h1 class="input-group">My Cart</h1>
+
+        {% if cart is defined and cartPriceTotal is defined %}
+            <form action="{{ path('viewcart') }}" method="post">
+            <table id="cart" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:50%">Product</th>
+                        <th style="width:10%">Price</th>
+                        <th style="width:8%">Quantity</th>
+                        <th style="width:22%" class="text-center">Subtotal</th>
+                        <th style="width:10%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for item in cart %}
+                        <tr>
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-sm-2 hidden-xs"><img src="{{ asset("images/products/") ~ item.product.imagePath  }}" width="100" alt="..." class="img-responsive"/></div>
+                                    <div class="col-sm-10">
+                                        <h4 class="nomargin">{{ item.product.name }}</h4>
+                                        <p>{{ item.product.description }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-th="Price">&pound;{{ item.price_unit }}</td>
+                            <td data-th="Quantity">
+                                <input name="prodCode[{{ item.prodCode }}]" type="hidden" value="{{ item.prodCode }}">
+                                <input name="qty[{{ item.prodCode }}]" type="number" class="form-control text-center" value="{{ item.qty }}">
+                            </td>
+                            <td data-th="Subtotal" class="text-center">&pound;{{ item.price_total }}</td>
+                            <td class="actions" data-th="">
+                                <button class="btn btn-info btn-sm" name="update[{{ item.prodCode }}]"><span class="glyphicon glyphicon-refresh"></span></button>
+                                <button class="btn btn-danger btn-sm" name="remove[{{ item.prodCode }}]"><span class="glyphicon glyphicon-remove"></span></button>                                
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr class="visible-xs">
+                        
+                        <td class="text-center"><strong>Total &pound;{% if cartPriceTotal is defined %}{{ cartPriceTotal }}{% else %}{% endif %}</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('products') }}" class="btn btn-warning">Continue Shopping</a> / <a href="{{ path('clearcart') }}" class="btn btn-danger">Clear Cart</a></td>
+                        <td colspan="2" class="hidden-xs"></td>
+                        <td class="hidden-xs text-center"><strong>Total &pound;{% if cartPriceTotal is defined %}{{ cartPriceTotal }}{% else %}{% endif %}</strong></td>
+                        <td><a href="{{ path('checkout') }}" class="btn btn-success btn-block">Checkout</a></td>
+                    </tr>
+                </tfoot>
+            </table>
+        {% else %}
+            <h3>You have no items in your cart!</h3>
+            <p>Click <a href="{{ path('products') }}">here</a> to view our products.</p>
+        {% endif %}
+    </div>
+{% endblock %}

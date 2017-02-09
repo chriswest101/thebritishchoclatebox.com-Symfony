@@ -1,0 +1,15 @@
+<div class="prices text-right addedToCartParent">
+
+	{{ form_start(form, {'class': 'addCart'}) }}
+	    <div class="input-group">
+	        <span class="input-group-addon" id="qty-addon">Qty</span>
+			{{ form_widget(form.qty) }}
+	    </div>
+		{{ form_widget(form.prodCode) }}
+	{{ form_end(form) }}
+
+
+	<div class="addedToCart">
+		<span class="glyphicon glyphicon-ok"></span> Item Added Successfully
+	</div>
+</div>

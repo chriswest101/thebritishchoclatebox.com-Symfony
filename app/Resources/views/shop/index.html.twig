@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{% block main %}
+    {% include 'banner.html.twig' %}
+
+    <!-- content-section-starts-here -->
+    <div class="container">
+        <div class="main-content">
+
+            <div class="products-grid">
+                <header>
+                    <h3 class="head text-center">Latest Products</h3>
+                </header>
+                {% for product in products %}
+                    {% include 'shop/products_container.html.twig' %}
+                {% endfor %}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

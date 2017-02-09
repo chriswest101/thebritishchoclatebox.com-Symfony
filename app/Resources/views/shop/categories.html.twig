@@ -1,0 +1,7 @@
+
+<div class="list-group">
+    <a href="{{ path('products') }}" class="list-group-item list-group-item-action categoryBtn">Latest</a>
+    {% for category in categories %}
+        <a href="{{ path('products') }}/{{ category.name }}" class="list-group-item list-group-item-action categoryBtn">{{ category.name }}</a>
+    {% endfor %}
+</div>

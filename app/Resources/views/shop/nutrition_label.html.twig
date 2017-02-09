@@ -1,0 +1,40 @@
+{% if productNutrition.kcal is defined %}
+    <div>
+        <div class="row">
+            <h4 class="text-right">Nutrition Information</h4>
+            <ul class="ds-btn">
+                <li>
+                    <a class="btn btn-md btn-primary disabled nutritionInfo" href="#">
+                        <i class="glyphicon glyphicon-chevron-right pull-left"></i>
+                        <span>Calories<br><small>{{ productNutrition.kcal }}kcal</small></span>
+                    </a> 
+                </li>
+                <li>
+                    <a class="btn btn-md btn-primary disabled nutritionInfo" href="#">
+                        <i class="glyphicon glyphicon-chevron-right pull-left"></i>
+                        <span>Fat<br><small>{{ productNutrition.fat }}g</small></span>
+                    </a> 
+                </li>
+                <li>
+                    <a class="btn btn-md btn-primary disabled nutritionInfo" href="#">
+                        <i class="glyphicon glyphicon-chevron-right pull-left"></i>
+                        <span>Saturates<br><small>{{ productNutrition.saturates }}g</small></span>
+                    </a> 
+                </li>
+                <li>
+                    <a class="btn btn-md btn-primary disabled nutritionInfo" href="#">
+                        <i class="glyphicon glyphicon-chevron-right pull-left"></i>
+                        <span>Sugar<br><small>{{ productNutrition.sugars }}g</small></span>
+                    </a> 
+                </li>
+                <li>
+                    <a class="btn btn-md btn-primary disabled nutritionInfo" href="#">
+                        <i class="glyphicon glyphicon-chevron-right pull-left"></i>
+                        <span>Salt<br><small>{{ productNutrition.salt }}g</small></span>
+                    </a> 
+                </li>
+            </ul>
+        </div>
+        <p class="text-right">{{ productNutrition.per }}</p>
+    </div>
+{% endif %}

@@ -1,0 +1,33 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Counties
+ *
+ * @ORM\Table(name="counties")
+ * @ORM\Entity
+ */
+class Counties
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="county", type="text", length=65535, nullable=false)
+     */
+    private $county;
+
+
+}
+

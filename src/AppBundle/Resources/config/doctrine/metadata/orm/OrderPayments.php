@@ -1,0 +1,89 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OrderPayments
+ *
+ * @ORM\Table(name="order_payments")
+ * @ORM\Entity
+ */
+class OrderPayments
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_id", type="integer", nullable=false)
+     */
+    private $orderId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pay_type", type="string", length=20, nullable=false)
+     */
+    private $payType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pay_ref", type="text", length=65535, nullable=false)
+     */
+    private $payRef;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pay_ref2", type="text", length=65535, nullable=false)
+     */
+    private $payRef2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="currency", type="string", length=5, nullable=false)
+     */
+    private $currency;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="taken_by", type="string", length=30, nullable=false)
+     */
+    private $takenBy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="timestamp", type="string", length=14, nullable=false)
+     */
+    private $timestamp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=15, nullable=false)
+     */
+    private $status;
+
+
+}
+

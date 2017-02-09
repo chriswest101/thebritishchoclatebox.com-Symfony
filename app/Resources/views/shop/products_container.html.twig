@@ -1,0 +1,8 @@
+<div class="col-md-4 product simpleCart_shelfItem text-center">
+    <a href="{{ path('product', {prodCode: product.prodCode}) }}"><img src="{{ asset("images/products/") ~ product.imagePath  }}" alt="" /></a>
+    <div class="mask">
+        <a href="{{ path('product', {prodCode: product.prodCode}) }}">Quick View</a>
+    </div>
+    <a class="product_name" href="{{ path('product', {prodCode: product.prodCode}) }}">{{ product.name }}</a>
+    {% include 'shop/product_prices.html.twig' %}
+</div>
